@@ -4,7 +4,7 @@ extends KinematicBody
 var _state = null
 var possible_states : Dictionary = {}
 onready var states_holder = $States
-onready var state_label = $Addons/StateLabel
+onready var state_label = $HUD/StateLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

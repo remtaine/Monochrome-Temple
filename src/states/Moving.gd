@@ -18,11 +18,11 @@ func run(input):
 #	host.move_and_slide(velocity)
 	if velocity.x < 0:
 		host.is_flipped = false
-		host.change_direction("left")
+		host.change_direction("move_left")
 		
 	elif velocity.x > 0:
 		host.is_flipped = false
-		host.change_direction("right")
+		host.change_direction("move_right")
 	elif velocity.z < 0:
 		host.change_direction("move_forward")
 	else:

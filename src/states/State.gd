@@ -5,7 +5,7 @@ export var state_name = "State"
 	
 func get_raw_input() -> Dictionary:
 	var inputs = {
-		is_moving = Input.is_action_pressed("move"),
+		is_moving = Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_backward") or Input.is_action_pressed("move_forward"),
 		input_direction = get_input_direction()
 	}
 	return inputs

@@ -4,15 +4,15 @@
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=3]
 
-[sub_resource type="ProceduralSky" id=2]
+[sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.435294, 0.619608, 0.698039, 1 )
 sky_horizon_color = Color( 0.435294, 0.619608, 0.698039, 1 )
 ground_bottom_color = Color( 0.113725, 0.541176, 0.333333, 1 )
 ground_horizon_color = Color( 0.113725, 0.541176, 0.333333, 1 )
 
-[sub_resource type="Environment" id=1]
-background_mode = 6
-background_sky = SubResource( 2 )
+[sub_resource type="Environment" id=2]
+background_mode = 1
+background_sky = SubResource( 1 )
 ambient_light_color = Color( 0.878431, 0.87451, 0.87451, 1 )
 
 [node name="Level1" type="Spatial"]
@@ -29,9 +29,9 @@ __meta__ = {
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = SubResource( 2 )
 
 [node name="Characters" type="Spatial" parent="."]
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-transform = Transform( 0.999636, 0, -0.0269621, 0, 1, 0, 0.0269621, 0, 0.999636, 2.15362, 4.71443, -0.461668 )
+transform = Transform( 0.999636, 0, -0.0269621, 0, 1, 0, 0.0269621, 0, 0.999636, 2.15362, 2.6156, -0.461668 )
