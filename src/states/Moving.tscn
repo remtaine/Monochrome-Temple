@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/states/Moving.gd" type="Script" id=1]
+
+[node name="Moving" type="Spatial"]
+script = ExtResource( 1 )
+state_name = "moving"
+
+[node name="Tween" type="Tween" parent="."]

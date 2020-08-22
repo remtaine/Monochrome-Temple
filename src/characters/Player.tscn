@@ -1,0 +1,94 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://images/player/player v2 4way-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
+[ext_resource path="res://src/states/Moving.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/states/Idle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://images/player/player v2 4way moving Sheet.png" type="Texture" id=5]
+[ext_resource path="res://src/weapons/Staff.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.404601
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 3
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 128, 160 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 3
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 128, 160 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 3
+atlas = ExtResource( 5 )
+region = Rect2( 0, 160, 128, 160 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 3
+atlas = ExtResource( 5 )
+region = Rect2( 256, 0, 128, 160 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 3
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 128, 160 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 3
+atlas = ExtResource( 5 )
+region = Rect2( 256, 160, 128, 160 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 4 ) ],
+"loop": true,
+"name": "move_forward",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 7 ) ],
+"loop": true,
+"name": "move_backward",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.972266, 0, 0, 0, -9.92552e-08, -0.609224, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Pivot" type="Position3D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite3D" parent="Pivot"]
+billboard = 2
+frames = SubResource( 2 )
+animation = "move_forward"
+frame = 2
+playing = true
+
+[node name="Staff" parent="Pivot" instance=ExtResource( 6 )]
+transform = Transform( -0.707107, 0.707107, 0, 1.15202e-07, 1.15202e-07, -1, -0.707107, -0.707107, -1.62921e-07, 0, 0, -1.20531 )
+
+[node name="Addons" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Addons"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.47312, 0.958924 )
+
+[node name="States" type="Spatial" parent="."]
+
+[node name="Idle" parent="States" instance=ExtResource( 4 )]
+
+[node name="Moving" parent="States" instance=ExtResource( 3 )]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="StateLabel" type="Label" parent="HUD"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "State"
+__meta__ = {
+"_edit_use_anchors_": false
+}
