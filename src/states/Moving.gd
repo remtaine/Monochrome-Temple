@@ -6,7 +6,6 @@ var last_direction : Vector3 = Vector3.ZERO
 var direction : Vector3 = Vector3.ZERO
 var velocity : Vector3 = Vector3.ZERO
 
-onready var host = get_parent().get_parent()
 onready var tween = $Tween
 
 func enter():
@@ -18,15 +17,16 @@ func run(input):
 #	host.move_and_slide(velocity)
 	if velocity.x < 0:
 		host.is_flipped = false
-		host.change_direction("move_left")
-		
+#		host.change_direction("move_left")
+#		host.change_direction("move_forward")
 	elif velocity.x > 0:
 		host.is_flipped = false
-		host.change_direction("move_right")
-	elif velocity.z < 0:
-		host.change_direction("move_forward")
-	else:
+#		host.change_direction("move_right")
+#		host.change_direction("move_forward")
+	if velocity.z > 0:
 		host.change_direction("move_backward")
+	else:
+		host.change_direction("move_forward")
 			
 #	tween.interpolate_property(global_transform,"origin", host.global_transform.origin, host.position + velocity, 0.2, Tween.TRANS_LINEAR,Tween.EASE_IN)
 #	tween.start()

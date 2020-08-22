@@ -121,7 +121,7 @@ transform = Transform( -0.707107, 0.707107, 0, 1.15202e-07, 1.15202e-07, -1, -0.
 [node name="Addons" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="Addons"]
-transform = Transform( 1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.75348, 1.84991 )
+transform = Transform( 1, 0, 0, 0, 0.861239, 0.5082, 0, -0.5082, 0.861239, 0, 1.79706, 1.7286 )
 current = true
 
 [node name="States" type="Spatial" parent="."]
@@ -129,6 +129,7 @@ current = true
 [node name="Idle" parent="States" instance=ExtResource( 4 )]
 
 [node name="Moving" parent="States" instance=ExtResource( 3 )]
+speed = 6
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -143,3 +144,9 @@ text = "State"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timers" type="Spatial" parent="."]
+
+[node name="ShotCD" type="Timer" parent="Timers"]
+wait_time = 0.4
+one_shot = true

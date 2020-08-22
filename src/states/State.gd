@@ -2,7 +2,8 @@ class_name State
 extends Spatial
 
 export var state_name = "State"
-	
+onready var host = get_parent().get_parent()
+
 func get_raw_input() -> Dictionary:
 	var inputs = {
 		is_moving = Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_backward") or Input.is_action_pressed("move_forward"),

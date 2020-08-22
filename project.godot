@@ -60,6 +60,7 @@ window/size/width=1920
 window/size/height=1080
 window/size/test_width=960
 window/size/test_height=540
+mouse_cursor/custom_image="res://images/HUD/crosshair v2.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
