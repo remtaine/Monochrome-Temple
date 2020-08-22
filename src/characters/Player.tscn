@@ -111,6 +111,7 @@ shape = SubResource( 1 )
 billboard = 2
 frames = SubResource( 14 )
 animation = "move_forward"
+frame = 3
 playing = true
 
 [node name="Pivot" type="Position3D" parent="."]
@@ -121,7 +122,7 @@ transform = Transform( -0.707107, 0.707107, 0, 1.15202e-07, 1.15202e-07, -1, -0.
 [node name="Addons" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="Addons"]
-transform = Transform( 1, 0, 0, 0, 0.861239, 0.5082, 0, -0.5082, 0.861239, 0, 1.79706, 1.7286 )
+transform = Transform( 1, 0, 0, 0, 0.882628, 0.470072, 0, -0.470072, 0.882628, 0, 1.85929, 1.49017 )
 current = true
 
 [node name="States" type="Spatial" parent="."]

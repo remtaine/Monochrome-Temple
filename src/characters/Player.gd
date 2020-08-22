@@ -42,7 +42,8 @@ func point_staff_to_mouse():
 			pivot.rotation_degrees.y = weapon_angle_limits[1]
 
 func _input(event):
-	if event.is_action_pressed("shoot") and shot_cd_timer.is_stopped():
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) and shot_cd_timer.is_stopped():
+#	if event.is_action_pressed("shoot") and shot_cd_timer.is_stopped():
 		var f = fireball_resource.instance()
 		f.setup(spell_spawn_point.global_transform.origin, Vector3.FORWARD)
 		bullet_holder.add_child(f)
