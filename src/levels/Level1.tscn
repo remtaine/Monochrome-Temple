@@ -35,3 +35,5 @@ environment = SubResource( 2 )
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
 transform = Transform( 0.999636, 0, -0.0269621, 0, 1, 0, 0.0269621, 0, 0.999636, 2.15362, 2.6156, -0.461668 )
+
+[node name="BulletHolder" type="Spatial" parent="."]

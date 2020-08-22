@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/staff v1.png-114d0b296f78a5c8576382ee3dee6b38.s3tc.stex"
-path.etc="res://.import/staff v1.png-114d0b296f78a5c8576382ee3dee6b38.etc.stex"
+path.s3tc="res://.import/fireball.png-1a29ca2edd39b16302e9737d9b05eb1c.s3tc.stex"
+path.etc="res://.import/fireball.png-1a29ca2edd39b16302e9737d9b05eb1c.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://images/weapons/staff v1.png"
-dest_files=[ "res://.import/staff v1.png-114d0b296f78a5c8576382ee3dee6b38.s3tc.stex", "res://.import/staff v1.png-114d0b296f78a5c8576382ee3dee6b38.etc.stex" ]
+source_file="res://images/spells/fireball.png"
+dest_files=[ "res://.import/fireball.png-1a29ca2edd39b16302e9737d9b05eb1c.s3tc.stex", "res://.import/fireball.png-1a29ca2edd39b16302e9737d9b05eb1c.etc.stex" ]
 
 [params]
 
@@ -22,8 +22,8 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
-flags/filter=false
-flags/mipmaps=false
+flags/filter=true
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
