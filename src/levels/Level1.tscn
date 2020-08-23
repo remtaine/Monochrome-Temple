@@ -39,12 +39,12 @@ environment = SubResource( 2 )
 transform = Transform( 0.999636, 0, -0.0269621, 0, 1, 0, 0.0269621, 0, 0.999636, 2.15362, 10.8119, -2.07327 )
 
 [node name="Enemy1" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 4.03616, -10.2005 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 3.11888, -10.2005 )
 
 [node name="Enemy2" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.90351, 3.47593, -10.2005 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.90351, 2.99902, -10.2005 )
 
 [node name="Enemy3" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20346, 5.13735, -10.2005 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20346, 3.10246, -10.2005 )
 
 [node name="ObjectHolder" type="Spatial" parent="."]

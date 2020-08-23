@@ -7,7 +7,7 @@
 extents = Vector3( 0.387377, 0.379012, 0.355969 )
 
 [node name="Grave" type="KinematicBody"]
-collision_layer = 2
+collision_layer = 32
 collision_mask = 2
 script = ExtResource( 2 )
 

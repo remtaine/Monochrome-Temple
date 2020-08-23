@@ -8,6 +8,8 @@ onready var sprite = $Sprite
 onready var pivot = $Pivot
 onready var camera = $Addons/Camera
 
+const GRAVITY = 0.7
+
 var velocity : Vector3
 onready var fireball_resource = preload("res://src/spells/Fireball.tscn")
 # Called when the node enters the scene tree for the first time.
@@ -26,7 +28,7 @@ func change_direction(dir):
 
 func _physics_process(delta):
 	point_staff_to_mouse()
-	velocity += Vector3.DOWN * 1
+	velocity += Vector3.DOWN * GRAVITY
 	velocity = move_and_slide(velocity, Vector3.UP)
 
 func _input(event):

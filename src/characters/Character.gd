@@ -49,6 +49,10 @@ func die():
 	d.global_transform.origin = global_transform.origin + (Vector3.UP * 0.2)
 	object_holder.add_child(d)
 	d.emitting = true
+	
+	d = grave.instance()
+	d.global_transform.origin = global_transform.origin + (Vector3.UP * 0.5)
+	object_holder.add_child(d)
 	queue_free()
 
 func shoot(resource):
