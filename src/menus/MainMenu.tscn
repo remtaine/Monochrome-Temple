@@ -1,0 +1,168 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://images/menus/Screen Shot 2020-08-23 at 5.11.38 PM.png" type="Texture" id=1]
+[ext_resource path="res://fonts/Kenney Pixel.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/menus/Menu.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 0.470588 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="DynamicFont" id=1]
+size = 256
+outline_size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.470588 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="DynamicFont" id=3]
+size = 128
+outline_size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "flash"
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 0.470588 )
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+outline_size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+outline_size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Node2D"]
+position = Vector2( -3.08386, 0 )
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Control"]
+scale = Vector2( 1.02, 1.02 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Control"]
+margin_left = 69.0308
+margin_top = 79.7689
+margin_right = 1093.03
+margin_bottom = 466.769
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
+text = "Monochrome
+ Temple"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartLabel" type="Label" parent="CanvasLayer/Control"]
+margin_left = 1327.48
+margin_top = 344.606
+margin_right = 1843.48
+margin_bottom = 559.606
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
+text = "Press Space
+Key to Start"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/StartLabel"]
+autoplay = "flash"
+anims/flash = SubResource( 8 )
+
+[node name="InstructionsLabel" type="Label" parent="CanvasLayer/Control"]
+margin_left = 1316.2
+margin_top = 614.847
+margin_right = 1846.2
+margin_bottom = 815.847
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
+text = "Instructions:
+WASD/Arrow Keys to move
+LMB to shoot
+Hold RMB to pan camera"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsLabel" type="Label" parent="CanvasLayer/Control"]
+margin_left = 0.539032
+margin_top = 1024.64
+margin_right = 888.539
+margin_bottom = 1072.64
+custom_fonts/font = SubResource( 5 )
+text = "Programming by Efigi & Graphics by Kenney"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VersionLabel" type="Label" parent="CanvasLayer/Control"]
+margin_left = 1778.9
+margin_top = 1021.82
+margin_right = 1922.9
+margin_bottom = 1069.82
+custom_fonts/font = SubResource( 6 )
+text = "v0.9.0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

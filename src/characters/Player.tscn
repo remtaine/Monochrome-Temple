@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://images/characters/player/player v2 4way-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://src/states/Jumping.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/addons/ScreenShaker.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/addons/Camera.gd" type="Script" id=11]
+[ext_resource path="res://images/HUD/hp_bar empty v1.png" type="Texture" id=12]
+[ext_resource path="res://images/HUD/hp_bar v1.png" type="Texture" id=13]
+[ext_resource path="res://images/HUD/crosshair.png" type="Texture" id=14]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.404601
@@ -99,7 +102,7 @@ animations = [ {
 } ]
 
 [sub_resource type="StyleBoxFlat" id=15]
-content_margin_left = 20.0
+content_margin_left = 40.0
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 6
 border_width_top = 6
@@ -136,6 +139,7 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 [node name="Player" type="KinematicBody"]
 collision_layer = 5
 script = ExtResource( 2 )
+hp = 10
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.972266, 0, 0, 0, -9.92552e-08, -0.609224, 0, 1, -1.62921e-07, 0, 0, 0 )
@@ -153,21 +157,21 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0976863 )
 [node name="Staff" parent="Pivot" instance=ExtResource( 6 )]
 transform = Transform( -0.707107, 0.707107, 0, 1.15202e-07, 1.15202e-07, -1, -0.707107, -0.707107, -1.62921e-07, 0.345347, -0.00612378, -0.546053 )
 
-[node name="Addons" type="Spatial" parent="."]
+[node name="CameraBase" type="Position3D" parent="."]
 
-[node name="Camera" type="Camera" parent="Addons"]
-transform = Transform( 1, 0, 0, 0, 0.882628, 0.470072, 0, -0.470072, 0.882628, 0, 1.85929, 1.49017 )
+[node name="Camera" type="Camera" parent="CameraBase"]
+transform = Transform( 1, 0, 0, 0, 0.882628, 0.470072, 0, -0.470072, 0.882628, 0, 1.85929, 1.36328 )
 current = true
 script = ExtResource( 11 )
 
-[node name="Screenshaker" parent="Addons/Camera" instance=ExtResource( 10 )]
+[node name="Screenshaker" parent="CameraBase/Camera" instance=ExtResource( 10 )]
 
 [node name="States" type="Spatial" parent="."]
 
 [node name="Idle" parent="States" instance=ExtResource( 4 )]
 
 [node name="Moving" parent="States" instance=ExtResource( 3 )]
-speed = 6
+speed = 8
 
 [node name="Jumping" parent="States" instance=ExtResource( 9 )]
 jump_height = 15
@@ -175,10 +179,10 @@ jump_height = 15
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="StateLabel" type="Label" parent="HUD"]
-margin_left = 11.2272
-margin_top = 10.9478
-margin_right = 261.227
-margin_bottom = 118.948
+margin_left = 10.0
+margin_top = 960.0
+margin_right = 260.0
+margin_bottom = 1068.0
 custom_styles/normal = SubResource( 15 )
 custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -187,6 +191,24 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HPBar" type="TextureProgress" parent="HUD"]
+margin_left = 7.35181
+margin_top = -13.367
+margin_right = 391.352
+margin_bottom = 114.633
+value = 70.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursor" type="Sprite" parent="HUD"]
+visible = false
+position = Vector2( 960, 540 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 14 )
 
 [node name="Timers" type="Spatial" parent="."]
 

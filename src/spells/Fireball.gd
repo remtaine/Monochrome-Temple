@@ -10,11 +10,12 @@ onready var sprite = $Sprite
 func _ready():
 	add_to_group("bullets")
 
-func setup(pos, pointer, dir, owned):
+func setup(pos, pointer, dir, owned, spd = speed):
 	global_transform.origin = pos.global_transform.origin
 	direction = dir
 	velocity = direction * speed
 	owned_by = owned
+	speed = spd
 #	var angle = pos.global_transform.origin.angle_to(pointer.global_transform.origin)
 #
 #	var origin_2d = Vector2(pos.global_transform.origin.x, pos.global_transform.origin.y)
@@ -36,7 +37,13 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		var hit = collision.get_collider()
-		if hit.is_in_group("enemies") and owned_by.is_in_group("allies"):
-			hit.die()
+		if hit != null and owned_by != null and hit.is_in_group("enemies") and owned_by.is_in_group("allies"):
+			hit.damage()
+			get_tree().call_group("cameras","shake")
+		elif hit != null and owned_by != null and hit.is_in_group("allies") and owned_by.is_in_group("enemies"):
+			hit.damage()
 			get_tree().call_group("cameras","shake")
 		queue_free()
+
+func _on_LifeTimer_timeout():
+	queue_free()

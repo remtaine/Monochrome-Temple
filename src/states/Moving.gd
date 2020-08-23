@@ -32,12 +32,14 @@ func run(input):
 		host.change_direction("move_backward")
 	else:
 		host.change_direction("move_forward")
-			
+	
 #	tween.interpolate_property(global_transform,"origin", host.global_transform.origin, host.position + velocity, 0.2, Tween.TRANS_LINEAR,Tween.EASE_IN)
 #	tween.start()
 #	host.position += velocity
 #	host.velocity = host.move_and_slide(host.velocity, Vector3.UP)
-	
+	if not is_bot:
+		host.velocity = host.velocity.rotated(Vector3.UP, host.camera_base.rotation.y)
+
 func interpret_inputs(input):
 	if input.is_jumping:
 		return "jumping"

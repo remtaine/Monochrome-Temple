@@ -1,34 +1,77 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://src/spells/Fireball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/spells/Fireball.gd" type="Script" id=1]
 [ext_resource path="res://images/spells/slash v1.png" type="Texture" id=2]
+[ext_resource path="res://images/environment/ground v3.png" type="Texture" id=3]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="CapsuleShape" id=15]
+
+[sub_resource type="SpatialMaterial" id=16]
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource( 2 )
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 3, 2, 1 )
 
-[sub_resource type="PlaneMesh" id=2]
-material = SubResource( 1 )
+[sub_resource type="CubeMesh" id=17]
+material = SubResource( 16 )
 
-[node name="Slash" instance=ExtResource( 1 )]
-speed = 4
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0.0147059, 0.791944 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.129782 ), 0.0, 0.0, 0, 0 ]
 
-[node name="Sprite" parent="." index="1"]
+[sub_resource type="Gradient" id=18]
+offsets = PoolRealArray( 0.280374, 0.771605 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="CubeMesh" id=19]
+
+[sub_resource type="SpatialMaterial" id=20]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[node name="Slash" type="KinematicBody"]
+collision_layer = 17
+collision_mask = 14
+script = ExtResource( 1 )
+speed = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.396614, 0, 0, 0, 0.319215, 0, 0, 0, 0.358356, 0, 0, 0 )
+shape = SubResource( 15 )
+
+[node name="Sprite" type="Sprite3D" parent="."]
 transform = Transform( -0.707107, 0.707107, 0, 1.15202e-07, 1.15202e-07, -1, -0.707107, -0.707107, -1.62921e-07, 0, 0, 0 )
+visible = false
 texture = ExtResource( 2 )
 
-[node name="CPUParticles" parent="Particles" index="0"]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )
-amount = 4
-lifetime = 1.0
-local_coords = true
-mesh = SubResource( 2 )
-direction = Vector3( -1, 0, 1 )
+[node name="Particles" type="Spatial" parent="."]
+
+[node name="CPUParticles" type="CPUParticles" parent="Particles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0.173 )
+local_coords = false
+draw_order = 1
+mesh = SubResource( 17 )
+flag_align_y = true
+direction = Vector3( 0, 0, 0 )
 spread = 0.0
-initial_velocity = 4.0
-initial_velocity_random = 0.0
-linear_accel_random = 0.0
-scale_amount = 0.6
-scale_amount_curve = null
+flatness = 0.2
+gravity = Vector3( 0, 0, 0 )
+scale_amount = 0.2
+scale_amount_curve = SubResource( 10 )
+color_ramp = SubResource( 18 )
+
+[node name="Timers" type="Spatial" parent="."]
+
+[node name="LifeTimer" type="Timer" parent="Timers"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0.182966 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+[connection signal="timeout" from="Timers/LifeTimer" to="." method="_on_LifeTimer_timeout"]

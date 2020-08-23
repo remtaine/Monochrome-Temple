@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Character",
+"class": "Bat",
+"language": "GDScript",
+"path": "res://src/characters/Bat.gd"
+}, {
 "base": "KinematicBody",
 "class": "Character",
 "language": "GDScript",
 "path": "res://src/characters/Character.gd"
+}, {
+"base": "Character",
+"class": "Darkman",
+"language": "GDScript",
+"path": "res://src/characters/Darkman.gd"
 }, {
 "base": "Character",
 "class": "Enemy",
@@ -23,6 +33,11 @@ _global_script_classes=[ {
 "class": "Fireball",
 "language": "GDScript",
 "path": "res://src/spells/Fireball.gd"
+}, {
+"base": "Spatial",
+"class": "Gate",
+"language": "GDScript",
+"path": "res://src/environment/Gate.gd"
 }, {
 "base": "KinematicBody",
 "class": "Grave",
@@ -43,6 +58,11 @@ _global_script_classes=[ {
 "class": "Level",
 "language": "GDScript",
 "path": "res://src/levels/Level.gd"
+}, {
+"base": "Node2D",
+"class": "Menu",
+"language": "GDScript",
+"path": "res://src/menus/Menu.gd"
 }, {
 "base": "State",
 "class": "Moving",
@@ -65,13 +85,17 @@ _global_script_classes=[ {
 "path": "res://src/states/State.gd"
 } ]
 _global_script_class_icons={
+"Bat": "",
 "Character": "",
+"Darkman": "",
 "Enemy": "",
 "Fireball": "",
+"Gate": "",
 "Grave": "",
 "Idle": "",
 "Jumping": "",
 "Level": "",
+"Menu": "",
 "Moving": "",
 "Player": "",
 "Screenshaker": "",
@@ -81,7 +105,7 @@ _global_script_class_icons={
 [application]
 
 config/name="3D FPS"
-run/main_scene="res://src/levels/Level1.tscn"
+run/main_scene="res://src/menus/MainMenu.tscn"
 config/icon="res://images/characters/player/player v2.png"
 
 [display]
@@ -107,21 +131,25 @@ move={
 move_forward={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
  ]
 }
 move_backward={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
 move_left={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
  ]
 }
 move_right={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
  ]
 }
 shoot={
@@ -146,12 +174,12 @@ pan_camera={
 }
 jump={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
 dash={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
 

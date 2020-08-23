@@ -13,9 +13,6 @@ func _ready():
 func enter():
 	host.velocity += Vector3.UP * jump_height
 
-func run(input):
-	pass
-
 func interpret_inputs(input):
 	if not host.is_on_floor():
 		return state_name

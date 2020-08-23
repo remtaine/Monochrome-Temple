@@ -1,4 +1,3 @@
-class_name Enemy
 extends Character
 
 var is_flipped : bool = false
@@ -36,9 +35,9 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	if target != null:
-
+		look_at(target.global_transform.origin, Vector3.UP)
 		if _state.get_raw_input().is_shooting and shot_cd_timer.is_stopped():
-			shoot(slash_resource)
+			shoot(slash_resource, 8)
 		#TODO add face enemy
 
 func set_target(t):

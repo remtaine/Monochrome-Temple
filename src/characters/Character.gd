@@ -2,6 +2,7 @@ class_name Character
 extends KinematicBody
 
 var _state = null
+var is_dead = false
 var possible_states : Dictionary = {}
 onready var states_holder = $States
 onready var state_label = $HUD/StateLabel
@@ -10,6 +11,10 @@ onready var grave = preload("res://src/particles/Grave.tscn")
 onready var object_holder = get_parent().get_parent().get_node("ObjectHolder")
 onready var shot_cd_timer = $Timers/ShotCD
 
+onready var camera_base = $CameraBase
+var direction : Vector3
+
+export var hp = 1
 onready var spell_spawn_point = $Pivot/Staff/SpellSpawner
 onready var spell_pointer = $Pivot/Staff/SpellPointer
 
@@ -43,8 +48,15 @@ func exit_state():
 
 func change_direction(dir):
 	pass
-	
+
+func damage(dmg = 1):
+	hp -= dmg
+	hp = max(0, hp)
+	if hp <= 0 and not is_dead:
+		die()
+		
 func die():
+	is_dead = true
 	var d = death_particle.instance()
 	d.global_transform.origin = global_transform.origin + (Vector3.UP * 0.2)
 	object_holder.add_child(d)
@@ -55,9 +67,12 @@ func die():
 	object_holder.add_child(d)
 	queue_free()
 
-func shoot(resource):
+func shoot(resource, spd = 6):
 	var f = resource.instance()
 	var dir = spell_spawn_point.global_transform.origin.direction_to(spell_pointer.global_transform.origin)
-	f.setup(spell_spawn_point, spell_pointer, dir, self)
+	if camera_base != null:
+		f.setup(spell_spawn_point, spell_pointer, dir, self, spd)
+	else:
+		f.setup(spell_spawn_point, spell_pointer, dir, self, spd)
 	object_holder.add_child(f)
 	shot_cd_timer.start()
