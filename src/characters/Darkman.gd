@@ -36,11 +36,10 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	if target != null:
-		match _phase:
-			PHASES.IDLE:
-				look_at(target.global_transform.origin, Vector3.UP)
+		look_at(target.global_transform.origin + (target.velocity * 0.4), Vector3.UP)
 		if _state.get_raw_input().is_shooting and shot_cd_timer.is_stopped():
-			shoot(slash_resource, 8)
+			if (global_transform.origin.distance_to(target.global_transform.origin)) < 50:
+				shoot(slash_resource, 10)
 		#TODO add face enemy
 
 func set_target(t):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://mesh libraries/tiles.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://src/characters/Bat.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/environment/Gate.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/characters/OneEye.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/menus/DeathMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/characters/Darkman.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/characters/Boss.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/menus/WinMenu.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.435294, 0.619608, 0.698039, 1 )
@@ -42,7 +46,7 @@ environment = SubResource( 2 )
 [node name="Characters" type="Spatial" parent="."]
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-transform = Transform( 0.999636, 0, -0.0269621, 0, 1, 0, 0.0269621, 0, 0.999636, 2.15362, 12.457, -3.67939 )
+transform = Transform( 0.999636, 0, -0.0269621, 0, 1, 0, 0.0269621, 0, 0.999636, 1.93304, 15.6329, -0.838493 )
 
 [node name="Enemy1" parent="Characters" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7968, 3.11888, 2.91679 )
@@ -63,37 +67,37 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7185, 2.99902, 102.292 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7185, 2.99902, 86.9569 )
 
 [node name="Enemy15" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.1707, 2.99902, 86.9569 )
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 57.1707, 2.99902, 84.0145 )
 
 [node name="Enemy16" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.1707, 2.99902, 86.9569 )
+transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 54.8255, 2.99902, 92.8362 )
 
 [node name="Enemy17" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75.1907, 2.99902, 86.9569 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 75.1907, 2.99902, 83.4504 )
 
 [node name="Enemy18" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75.1907, 2.99902, 100.397 )
+transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 80.2608, 2.99902, 100.397 )
 
 [node name="Enemy19" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 94.3955, 2.99902, 100.397 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 97.335, 2.99902, 102.646 )
 
 [node name="Enemy20" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 94.3955, 2.99902, 88.9217 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 94.3955, 2.99902, 84.0677 )
 
 [node name="Enemy21" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 94.3955, 2.99902, 109.548 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 94.3955, 2.99902, 110.253 )
 
 [node name="Enemy22" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 81.4442, 2.99902, 109.548 )
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 83.4559, 2.99902, 93.6185 )
 
 [node name="Enemy23" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 81.4442, 2.99902, 101.036 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 81.4442, 2.99902, 82.1955 )
 
 [node name="Enemy24" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 68.6806, 2.99902, 101.036 )
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 64.8889, 2.99902, 90.7073 )
 
 [node name="Enemy25" parent="Characters" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 99.0201, 2.99902, 93.2699 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 99.0201, 2.99902, 93.2699 )
 
 [node name="Enemy11" parent="Characters" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5452, 2.99902, 64.7196 )
@@ -194,9 +198,57 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.707, 5.26024, 45.3546 )
 [node name="OneEye5" parent="Characters" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4944, 5.26024, 81.3612 )
 
+[node name="OneEye9" parent="Characters" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 68.374, 5.26024, 96.8973 )
+
+[node name="Boss" parent="Characters" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 80.6482, 5.05934, 96.8973 )
+
+[node name="OneEye10" parent="Characters" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 68.374, 5.26024, 96.8973 )
+
+[node name="OneEye11" parent="Characters" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 93.2876, 5.26024, 96.8973 )
+
+[node name="OneEye12" parent="Characters" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 93.2876, 5.26024, 88.206 )
+
+[node name="OneEye13" parent="Characters" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 85.5241, 5.26024, 88.206 )
+
+[node name="OneEye14" parent="Characters" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7441, 5.26024, 105.128 )
+
 [node name="OneEye6" parent="Characters" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5603, 5.26024, 70.493 )
 
+[node name="Darkman" parent="Characters" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3738, 15.2922, 88.2576 )
+
+[node name="Darkman4" parent="Characters" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 73.6092, 3.37545, 88.2576 )
+
+[node name="Darkman5" parent="Characters" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 73.6092, 4.48292, 101.654 )
+
+[node name="Darkman6" parent="Characters" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 89.4231, 3.58014, 95.3717 )
+
+[node name="Darkman7" parent="Characters" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.402, 6.7117, 102.976 )
+
+[node name="Darkman2" parent="Characters" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6656, 15.2922, 100.797 )
+
+[node name="Darkman3" parent="Characters" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6928, 15.2922, 74.8099 )
+
 [node name="ObjectHolder" type="Spatial" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="DeathMenu" parent="HUD" instance=ExtResource( 8 )]
+
+[node name="WinMenu" parent="HUD" instance=ExtResource( 11 )]
 
 [editable path="Gate"]

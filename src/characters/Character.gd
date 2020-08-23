@@ -74,5 +74,8 @@ func shoot(resource, spd = 6):
 		f.setup(spell_spawn_point, spell_pointer, dir, self, spd)
 	else:
 		f.setup(spell_spawn_point, spell_pointer, dir, self, spd)
-	object_holder.add_child(f)
+	if object_holder != null:
+		object_holder.add_child(f)
+	else:
+		get_parent().get_parent().get_parent().get_parent().get_node("ObjectHolder").add_child(f)
 	shot_cd_timer.start()

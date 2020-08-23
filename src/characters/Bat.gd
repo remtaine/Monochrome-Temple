@@ -33,7 +33,8 @@ func _physics_process(delta):
 	if target != null:
 		look_at(target.global_transform.origin, Vector3.UP)
 		if _state.get_raw_input().is_shooting and shot_cd_timer.is_stopped():
-			shoot(slash_resource)
+			if (global_transform.origin.distance_to(target.global_transform.origin)) < 50:
+				shoot(slash_resource)
 		#TODO add face enemy
 
 func set_target(t):

@@ -4,20 +4,20 @@
 [ext_resource path="res://fonts/Kenney Pixel.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/menus/Menu.gd" type="Script" id=3]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 0.470588 )
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 256
 outline_size = 12
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 0.470588 )
 border_width_left = 10
 border_width_top = 10
@@ -33,13 +33,13 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 128
 outline_size = 12
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "flash"
 length = 2.0
 loop = true
@@ -57,7 +57,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 1, 1, 1, 0.470588 )
 border_color = Color( 0, 0, 0, 1 )
 border_blend = true
@@ -66,13 +66,13 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 64
 outline_size = 12
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 64
 outline_size = 12
 outline_color = Color( 0, 0, 0, 1 )
@@ -101,8 +101,8 @@ margin_left = 69.0308
 margin_top = 79.7689
 margin_right = 1093.03
 margin_bottom = 466.769
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Monochrome
  Temple"
 __meta__ = {
@@ -114,8 +114,8 @@ margin_left = 1327.48
 margin_top = 344.606
 margin_right = 1843.48
 margin_bottom = 559.606
-custom_styles/normal = SubResource( 4 )
-custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Press Space
 Key to Start"
 align = 1
@@ -125,19 +125,21 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/StartLabel"]
 autoplay = "flash"
-anims/flash = SubResource( 8 )
+anims/flash = SubResource( 5 )
 
 [node name="InstructionsLabel" type="Label" parent="CanvasLayer/Control"]
 margin_left = 1316.2
 margin_top = 614.847
 margin_right = 1846.2
 margin_bottom = 815.847
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "Instructions:
 WASD/Arrow Keys to move
 LMB to shoot
-Hold RMB to pan camera"
+Hold RMB to pan camera
+
+Kill The Boss!"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -148,7 +150,7 @@ margin_left = 0.539032
 margin_top = 1024.64
 margin_right = 888.539
 margin_bottom = 1072.64
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Programming by Efigi & Graphics by Kenney"
 align = 1
 __meta__ = {
@@ -160,8 +162,8 @@ margin_left = 1778.9
 margin_top = 1021.82
 margin_right = 1922.9
 margin_bottom = 1069.82
-custom_fonts/font = SubResource( 6 )
-text = "v0.9.0"
+custom_fonts/font = SubResource( 8 )
+text = "v1.0.0"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

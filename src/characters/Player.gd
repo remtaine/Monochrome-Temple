@@ -93,4 +93,5 @@ func die():
 	d.global_transform.origin = global_transform.origin + (Vector3.UP * 0.5)
 	object_holder.add_child(d)
 	visible = false
+	get_tree().call_group("levels", "show_death_menu")
 	set_physics_process(false)

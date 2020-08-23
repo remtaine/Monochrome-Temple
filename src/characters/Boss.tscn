@@ -4,13 +4,13 @@
 [ext_resource path="res://images/environment/ground v3.png" type="Texture" id=2]
 [ext_resource path="res://src/weapons/Staff.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/states/Idle.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/characters/Darkman.gd" type="Script" id=5]
-[ext_resource path="res://images/characters/enemies/darkman v1.png" type="Texture" id=6]
+[ext_resource path="res://src/characters/Boss.gd" type="Script" id=5]
+[ext_resource path="res://images/characters/enemies/brute v1.png" type="Texture" id=6]
 
-[sub_resource type="CapsuleShape" id=1]
-radius = 0.404601
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.28867
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
@@ -23,33 +23,34 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 flags_unshaded = true
 albedo_texture = ExtResource( 2 )
 uv1_scale = Vector3( 3, 2, 1 )
 
-[sub_resource type="CubeMesh" id=4]
-material = SubResource( 3 )
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=7]
 offsets = PoolRealArray( 0, 0.907285 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[node name="Darkman" type="KinematicBody"]
+[node name="Boss" type="KinematicBody"]
 collision_layer = 9
 script = ExtResource( 5 )
+hp = 15
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.972266, 0, 0, 0, -9.92552e-08, -0.609224, 0, 1, -1.62921e-07, 0, 0, 0 )
-shape = SubResource( 1 )
+transform = Transform( 2, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 billboard = 2
 double_sided = false
-frames = SubResource( 2 )
+frames = SubResource( 8 )
 animation = "move_forward"
 playing = true
 
@@ -86,9 +87,9 @@ emitting = false
 amount = 16
 lifetime = 0.5
 local_coords = false
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 1.0
 scale_amount = 0.1
-scale_amount_curve = SubResource( 5 )
-color_ramp = SubResource( 6 )
+scale_amount_curve = SubResource( 6 )
+color_ramp = SubResource( 7 )

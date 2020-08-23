@@ -36,47 +36,47 @@ region = Rect2( 128, 160, 128, 160 )
 [sub_resource type="AtlasTexture" id=5]
 flags = 3
 atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 128, 160 )
+region = Rect2( 384, 0, 128, 160 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 3
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 128, 160 )
+region = Rect2( 384, 0, 128, 160 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 3
 atlas = ExtResource( 5 )
-region = Rect2( 0, 160, 128, 160 )
+region = Rect2( 384, 160, 128, 160 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 3
 atlas = ExtResource( 5 )
-region = Rect2( 256, 0, 128, 160 )
+region = Rect2( 0, 0, 128, 160 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 3
 atlas = ExtResource( 1 )
-region = Rect2( 256, 0, 128, 160 )
+region = Rect2( 0, 0, 128, 160 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 3
 atlas = ExtResource( 5 )
-region = Rect2( 256, 160, 128, 160 )
+region = Rect2( 0, 160, 128, 160 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 3
 atlas = ExtResource( 5 )
-region = Rect2( 384, 0, 128, 160 )
+region = Rect2( 256, 0, 128, 160 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 3
 atlas = ExtResource( 1 )
-region = Rect2( 384, 0, 128, 160 )
+region = Rect2( 256, 0, 128, 160 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 3
 atlas = ExtResource( 5 )
-region = Rect2( 384, 160, 128, 160 )
+region = Rect2( 256, 160, 128, 160 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
@@ -87,17 +87,17 @@ animations = [ {
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 6 ) ],
 "loop": true,
-"name": "move_forward",
+"name": "move_right",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 9 ) ],
 "loop": true,
-"name": "move_backward",
+"name": "move_forward",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 12 ) ],
 "loop": true,
-"name": "move_right",
+"name": "move_backward",
 "speed": 5.0
 } ]
 
@@ -149,6 +149,7 @@ shape = SubResource( 1 )
 billboard = 2
 frames = SubResource( 14 )
 animation = "move_forward"
+frame = 3
 playing = true
 
 [node name="Pivot" type="Position3D" parent="."]
