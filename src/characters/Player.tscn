@@ -1,12 +1,16 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://images/player/player v2 4way-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://images/characters/player/player v2 4way-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/states/Moving.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/states/Idle.tscn" type="PackedScene" id=4]
-[ext_resource path="res://images/player/player v2 4way moving Sheet.png" type="Texture" id=5]
+[ext_resource path="res://images/characters/player/player v2 4way moving Sheet.png" type="Texture" id=5]
 [ext_resource path="res://src/weapons/Staff.tscn" type="PackedScene" id=6]
 [ext_resource path="res://fonts/Kenney Pixel.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://images/environment/ground v3.png" type="Texture" id=8]
+[ext_resource path="res://src/states/Jumping.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/addons/ScreenShaker.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/addons/Camera.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.404601
@@ -94,13 +98,43 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=15]
-size = 64
-outline_size = 2
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_left = 20.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 1
+
+[sub_resource type="DynamicFont" id=16]
+size = 128
+outline_size = 6
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
+[sub_resource type="SpatialMaterial" id=17]
+flags_unshaded = true
+albedo_texture = ExtResource( 8 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="CubeMesh" id=18]
+material = SubResource( 17 )
+
+[sub_resource type="Curve" id=19]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=20]
+offsets = PoolRealArray( 0, 0.907285 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
 [node name="Player" type="KinematicBody"]
+collision_layer = 5
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -111,7 +145,6 @@ shape = SubResource( 1 )
 billboard = 2
 frames = SubResource( 14 )
 animation = "move_forward"
-frame = 3
 playing = true
 
 [node name="Pivot" type="Position3D" parent="."]
@@ -124,6 +157,9 @@ transform = Transform( -0.707107, 0.707107, 0, 1.15202e-07, 1.15202e-07, -1, -0.
 [node name="Camera" type="Camera" parent="Addons"]
 transform = Transform( 1, 0, 0, 0, 0.882628, 0.470072, 0, -0.470072, 0.882628, 0, 1.85929, 1.49017 )
 current = true
+script = ExtResource( 11 )
+
+[node name="Screenshaker" parent="Addons/Camera" instance=ExtResource( 10 )]
 
 [node name="States" type="Spatial" parent="."]
 
@@ -132,16 +168,20 @@ current = true
 [node name="Moving" parent="States" instance=ExtResource( 3 )]
 speed = 6
 
+[node name="Jumping" parent="States" instance=ExtResource( 9 )]
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="StateLabel" type="Label" parent="HUD"]
-margin_left = 15.3082
-margin_top = -0.182243
-margin_right = 127.308
-margin_bottom = 47.8178
-custom_fonts/font = SubResource( 15 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
+margin_left = 11.2272
+margin_top = 10.9478
+margin_right = 261.227
+margin_bottom = 118.948
+custom_styles/normal = SubResource( 15 )
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "State"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -151,3 +191,18 @@ __meta__ = {
 [node name="ShotCD" type="Timer" parent="Timers"]
 wait_time = 0.4
 one_shot = true
+
+[node name="Particles" type="Spatial" parent="."]
+
+[node name="CPUParticles" type="CPUParticles" parent="Particles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+emitting = false
+amount = 16
+lifetime = 0.5
+local_coords = false
+mesh = SubResource( 18 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+scale_amount = 0.1
+scale_amount_curve = SubResource( 19 )
+color_ramp = SubResource( 20 )

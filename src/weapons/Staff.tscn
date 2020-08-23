@@ -8,3 +8,6 @@ texture = ExtResource( 1 )
 
 [node name="SpellSpawner" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 1.42109e-14, 1.42109e-14, 1, 0.327889, 0.327889, 7.55469e-08 )
+
+[node name="SpellPointer" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 3.55271e-14, 3.55271e-14, 1, 1.58699, 1.58699, 3.6565e-07 )

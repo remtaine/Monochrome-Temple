@@ -6,9 +6,12 @@ func _ready():
 
 func enter():
 	host.change_direction("move_forward")
-		
+	host.velocity = Vector3.ZERO
+	
 func interpret_inputs(input):
-	if input.is_moving:
+	if input.is_jumping:
+		return "jumping"
+	elif input.is_moving:
 		return "moving"
 	else:
 		return state_name

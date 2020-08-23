@@ -14,10 +14,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/characters/Character.gd"
 }, {
+"base": "Character",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://src/characters/Enemy.gd"
+}, {
+"base": "KinematicBody",
+"class": "Fireball",
+"language": "GDScript",
+"path": "res://src/spells/Fireball.gd"
+}, {
+"base": "KinematicBody",
+"class": "Grave",
+"language": "GDScript",
+"path": "res://src/particles/Grave.gd"
+}, {
 "base": "State",
 "class": "Idle",
 "language": "GDScript",
 "path": "res://src/states/Idle.gd"
+}, {
+"base": "State",
+"class": "Jumping",
+"language": "GDScript",
+"path": "res://src/states/Jumping.gd"
 }, {
 "base": "Node",
 "class": "Level",
@@ -35,16 +55,26 @@ _global_script_classes=[ {
 "path": "res://src/characters/Player.gd"
 }, {
 "base": "Spatial",
+"class": "Screenshaker",
+"language": "GDScript",
+"path": "res://src/addons/ScreenShaker.gd"
+}, {
+"base": "Spatial",
 "class": "State",
 "language": "GDScript",
 "path": "res://src/states/State.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
+"Enemy": "",
+"Fireball": "",
+"Grave": "",
 "Idle": "",
+"Jumping": "",
 "Level": "",
 "Moving": "",
 "Player": "",
+"Screenshaker": "",
 "State": ""
 }
 
@@ -52,7 +82,7 @@ _global_script_class_icons={
 
 config/name="3D FPS"
 run/main_scene="res://src/levels/Level1.tscn"
-config/icon="res://defaults/icon.png"
+config/icon="res://images/characters/player/player v2.png"
 
 [display]
 
@@ -114,14 +144,24 @@ pan_camera={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
 2d_physics/layer_1="world"
+3d_physics/layer_1="world"
 2d_physics/layer_2="terrain"
+3d_physics/layer_2="terrain"
 2d_physics/layer_3="allies"
+3d_physics/layer_3="allies"
 2d_physics/layer_4="enemies"
+3d_physics/layer_4="enemies"
 2d_physics/layer_5="bullets"
+3d_physics/layer_5="bullets"
 
 [rendering]
 

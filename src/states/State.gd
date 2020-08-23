@@ -1,14 +1,26 @@
 class_name State
 extends Spatial
 
+export var is_bot = false
 export var state_name = "State"
 onready var host = get_parent().get_parent()
 
 func get_raw_input() -> Dictionary:
-	var inputs = {
-		is_moving = Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_backward") or Input.is_action_pressed("move_forward"),
-		input_direction = get_input_direction()
-	}
+	var inputs	
+	if not is_bot:
+		inputs = {
+			is_moving = Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_backward") or Input.is_action_pressed("move_forward"),
+			input_direction = get_input_direction(),
+			is_jumping = Input.is_action_pressed("jump") and host.is_on_floor(),
+			is_shooting = Input.is_action_pressed("shoot")
+		}
+	else:
+		inputs = {
+			is_moving = false,
+			input_direction = Vector3.BACK,
+			is_jumping = false,
+			is_shooting = true
+		}		
 	return inputs
 	
 func interpret_inputs(input):
