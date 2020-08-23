@@ -26,7 +26,7 @@ func _ready():
 	add_to_group("enemies")
 	change_direction("move_forward")
 	randomize()
-	shot_cd_timer.wait_time = 0.7 + ((randi() % 5)/10.0)
+	shot_cd_timer.wait_time = 0.6 + ((randi() % 5)/10.0)
 
 func change_direction(dir):
 	sprite.play(dir)

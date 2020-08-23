@@ -14,7 +14,7 @@ const MOUSE_SENS = 0.3
 var velocity : Vector3
 onready var fireball_resource = preload("res://src/spells/Fireball.tscn")
 onready var hp_bar = $HUD/HPBar
-
+var pan_camera_toggled = false
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
@@ -42,10 +42,12 @@ func _physics_process(delta):
 func _input(event):
 	if is_dead:
 		return
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and shot_cd_timer.is_stopped():
+	if (Input.is_mouse_button_pressed(BUTTON_LEFT) or Input.is_action_pressed("shoot")) and shot_cd_timer.is_stopped():
 #	if event.is_action_pressed("shoot") and shot_cd_timer.is_stopped():
 		shoot(fireball_resource)
-	if Input.is_mouse_button_pressed(BUTTON_RIGHT):# and shot_cd_timer.is_stopped():
+	if Input.is_action_just_pressed("pan_camera_toggle"):
+		pan_camera_toggled = not pan_camera_toggled
+	if Input.is_mouse_button_pressed(BUTTON_RIGHT) or Input.is_action_pressed("pan_camera") or pan_camera_toggled:# and shot_cd_timer.is_stopped():
 #	if event.is_action_pressed("shoot") and shot_cd_timer.is_stopped():
 		if event is InputEventMouseMotion:
 	#			camera.look_at(Vector3(event.position.x, 0, event.position.y), Vector3.UP)

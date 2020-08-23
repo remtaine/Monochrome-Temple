@@ -136,8 +136,9 @@ custom_styles/normal = SubResource( 6 )
 custom_fonts/font = SubResource( 7 )
 text = "Instructions:
 WASD/Arrow Keys to move
-LMB to shoot
-Hold RMB to pan camera
+LMB/Shift to shoot
+Hold RMB/V to pan camera
+E to toggle pan camera
 
 Kill The Boss!"
 align = 1

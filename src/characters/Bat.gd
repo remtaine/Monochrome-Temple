@@ -21,6 +21,8 @@ onready var slash_resource = preload("res://src/spells/Slash.tscn")
 func _ready():
 	add_to_group("enemies")
 	change_direction("move_forward")
+	randomize()
+	shot_cd_timer.wait_time = 1.0 + ((randi() % 5)/10.0)
 	tween.interpolate_property(self,"translation", self.translation, self.translation + (Vector3.DOWN* dist), duration,Tween.TRANS_LINEAR,Tween.EASE_IN)
 	tween.start()
 		

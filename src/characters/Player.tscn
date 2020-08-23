@@ -180,6 +180,7 @@ jump_height = 15
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="StateLabel" type="Label" parent="HUD"]
+visible = false
 margin_left = 10.0
 margin_top = 960.0
 margin_right = 260.0
